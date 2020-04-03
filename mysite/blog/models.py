@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -41,9 +41,9 @@ class Post(models.Model):
         return reverse(
             'blog:post_detail',
             args=[
-                self.publish.
+                self.publish.year,
                 self.publish.strftime('%m'),
-                self.published.strftime('%d'),
+                self.publish.strftime('%d'),
                 self.slug
             ]
         )
